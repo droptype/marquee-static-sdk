@@ -38,7 +38,7 @@ compileSass = (source_path, dest_path, project_directory, cb) ->
         error: (err) ->
             throw err if err
         success: (compiled) ->
-            compiled = autoprefixer.process(compiled).css
+            compiled = autoprefixer.process(compiled.css).css
             if process.env.NODE_ENV is 'production'
                 SDKError.log(SDKError.colors.grey("Minifying #{ source_path.replace(project_directory,'') }"))
                 compiled = sqwish.minify(compiled.toString())
